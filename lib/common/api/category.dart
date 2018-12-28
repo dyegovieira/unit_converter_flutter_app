@@ -4,10 +4,11 @@
 
 // To keep your imports tidy, follow the ordering guidelines at
 // https://www.dartlang.org/guides/language/effective-dart/style#ordering
+
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
-import 'package:unit_converter_flutter_app/unit.dart';
+import 'package:unit_converter_flutter_app/common/api/unit.dart';
 
 /// A [Category] keeps track of a list of [Unit]s.
 class Category {
@@ -15,6 +16,7 @@ class Category {
   final ColorSwatch color;
   final List<Unit> units;
   final String iconLocation;
+  final bool fromApi;
 
   /// Information about a [Category].
   ///
@@ -26,8 +28,10 @@ class Category {
     @required this.color,
     @required this.units,
     @required this.iconLocation,
+    @required this.fromApi,
   })  : assert(name != null),
         assert(color != null),
         assert(units != null),
-        assert(iconLocation != null);
+        assert(iconLocation != null),
+        assert(fromApi != null);
 }

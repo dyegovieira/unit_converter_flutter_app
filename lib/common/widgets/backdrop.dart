@@ -7,7 +7,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
-import 'package:unit_converter_flutter_app/category.dart';
+import 'package:unit_converter_flutter_app/common/api/category.dart';
 
 const double _kFlingVelocity = 2.0;
 
@@ -83,8 +83,6 @@ class _BackdropTitle extends AnimatedWidget {
       style: Theme.of(context).primaryTextTheme.title,
       softWrap: false,
       overflow: TextOverflow.ellipsis,
-      // Here, we do a custom cross fade between backTitle and frontTitle.
-      // This makes a smooth animation between the two texts.
       child: Stack(
         children: <Widget>[
           Opacity(

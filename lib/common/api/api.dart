@@ -43,8 +43,7 @@ class Api {
     final uri = Uri.https(_url, '/$category');
     final jsonResponse = await _getJson(uri);
     if (jsonResponse == null || jsonResponse['units'] == null) {
-      print('Error retrieving units.');
-      return null;
+      throw ('Error retrieving units.');
     }
     return jsonResponse['units'];
   }
@@ -58,11 +57,9 @@ class Api {
         {'amount': amount, 'from': fromUnit, 'to': toUnit});
     final jsonResponse = await _getJson(uri);
     if (jsonResponse == null || jsonResponse['status'] == null) {
-      print('Error retrieving conversion.');
-      return null;
+      throw ('Error retrieving conversion.');
     } else if (jsonResponse['status'] == 'error') {
-      print(jsonResponse['message']);
-      return null;
+      throw (jsonResponse['message']);
     }
     return jsonResponse['conversion'].toDouble();
   }
@@ -83,8 +80,7 @@ class Api {
       // Finally, the string is parsed into a JSON object.
       return json.decode(responseBody);
     } on Exception catch (e) {
-      print('$e');
-      return null;
+      throw ('$e');
     }
   }
 }
